@@ -11,7 +11,7 @@ const OpsLevels = () => {
                     {/* level 1 */}
 
                     <div className="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                        <Link to="/levels/1">
+                        <Link to="/ops/1">
                             <div className="card">
                                 <div className="card-body p-3">
                                     <div className="row">
@@ -40,7 +40,7 @@ const OpsLevels = () => {
                     {/* Level 2 */}
 
                     <div className="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                        <Link to="/levels/2">
+                        <Link to="/ops/2">
                             <div className="card">
                                 <div className="card-body p-3">
                                     <div className="row">
@@ -68,7 +68,7 @@ const OpsLevels = () => {
 
                     {/* level 3 */}
                     <div className="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                        <Link to="/levels/3">
+                        <Link to="/ops/3">
                             <div className="card">
                                 <div className="card-body p-3">
                                     <div className="row">
@@ -96,7 +96,7 @@ const OpsLevels = () => {
 
                     {/* level 4 */}
                     <div className="col-xl-3 col-sm-6">
-                        <Link to="/levels/4">
+                        <Link to="/ops/4">
                             <div className="card">
                                 <div className="card-body p-3">
                                     <div className="row">

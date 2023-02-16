@@ -22,7 +22,6 @@
     "eject": "react-scripts eject",
     "dev": "concurrently \"cd ../iso-Project  && npm run develop  \"  \"npm start \" ",
     "production": "npm run serve -s build"
-    
   },
   "eslintConfig": {
     "extends": [

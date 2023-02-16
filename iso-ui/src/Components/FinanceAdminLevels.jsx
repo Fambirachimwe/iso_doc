@@ -1,7 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const FinanceAdminLevels = () => {
+
+    const [docs, setDocs] = useState([]);
+
+
+    const BASER_URL = "http://localhost:1337/api";
+
+
+
+    useEffect(() => {
+        fetch(`${BASER_URL}/documents?filters[department][$eq]=FA&populate=*`)
+            .then(response => response.json())
+            .then(res => {
+                setDocs([]);
+                setDocs(res.data);
+
+            })
+    }, []);
+
+
     return (
         <div className='financeAdminLevels'>
             <div className="levels">
@@ -11,13 +30,13 @@ const FinanceAdminLevels = () => {
                     {/* level 1 */}
 
                     <div className="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                        <Link to="/levels/1">
+                        <Link to="/finance-admin/1">
                             <div className="card">
                                 <div className="card-body p-3">
                                     <div className="row">
                                         <div className="col-8">
                                             <div className="numbers">
-                                                <h5 className="font-weight-bolder">Level 1</h5>
+                                                <h5 className="font-weight-bolder">FA Level 1</h5>
 
                                                 <br />
                                                 <br />
@@ -40,13 +59,13 @@ const FinanceAdminLevels = () => {
                     {/* Level 2 */}
 
                     <div className="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                        <Link to="/levels/2">
+                        <Link to="/finance-admin/2">
                             <div className="card">
                                 <div className="card-body p-3">
                                     <div className="row">
                                         <div className="col-8">
                                             <div className="numbers">
-                                                <h5 className="font-weight-bolder">Level 2</h5>
+                                                <h5 className="font-weight-bolder">FA Level 2</h5>
 
                                                 <br />
                                                 <br />
@@ -68,13 +87,13 @@ const FinanceAdminLevels = () => {
 
                     {/* level 3 */}
                     <div className="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                        <Link to="/levels/3">
+                        <Link to="/finance-admin/3">
                             <div className="card">
                                 <div className="card-body p-3">
                                     <div className="row">
                                         <div className="col-8">
                                             <div className="numbers">
-                                                <h5 className="font-weight-bolder">Level 3</h5>
+                                                <h5 className="font-weight-bolder">FA Level 3</h5>
 
                                                 <br />
                                                 <br />
@@ -96,13 +115,13 @@ const FinanceAdminLevels = () => {
 
                     {/* level 4 */}
                     <div className="col-xl-3 col-sm-6">
-                        <Link to="/levels/4">
+                        <Link to="/finance-admin/4">
                             <div className="card">
                                 <div className="card-body p-3">
                                     <div className="row">
                                         <div className="col-8">
                                             <div className="numbers">
-                                                <h5 className="font-weight-bolder">Level 4</h5>
+                                                <h5 className="font-weight-bolder">FA Level 4</h5>
 
                                                 <br />
                                                 <br />
@@ -134,7 +153,7 @@ const FinanceAdminLevels = () => {
                     <div className="col-12">
                         <div className="card mb-4">
                             <div className="card-header pb-0">
-                                <h6>All files from the levels directory</h6>
+                                <h6>All files from the Finance and Admin directory</h6>
                             </div>
 
                             <div className="card-body px-0 pt-0 pb-2">
@@ -142,18 +161,43 @@ const FinanceAdminLevels = () => {
                                     <table className="table align-items-center mb-0">
                                         <thead>
                                             <tr>
-                                                <th className=" align-middle text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                <th className="  text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     Title
                                                 </th>
-                                                <th className="align-middle text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                <th className=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                     Description
                                                 </th>
-                                                <th className="align-middle text-center text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                    Download
-                                                </th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
+
+                                            {
+                                                docs.map(file => (
+
+                                                    <tr key={file?.id}>
+
+                                                        <td>
+
+                                                            <Link to={`http://localhost:1337${file?.attributes?.file?.data?.attributes?.url}`} >
+                                                                <p className="text-sm  p-2 font-weight-bold mb-0">
+
+                                                                    {file?.attributes?.file?.data?.attributes?.name}
+
+                                                                </p>
+
+
+                                                            </Link>
+
+                                                        </td>
+                                                        <td className="">
+                                                            <span className="text-secondary text-xs font-weight-bold">
+                                                                {file?.attributes?.description}
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                ))
+                                            }
 
                                         </tbody>
                                     </table>

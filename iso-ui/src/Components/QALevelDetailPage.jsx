@@ -1,24 +1,26 @@
-import { useQuery } from '@tanstack/react-query';
-import React from 'react'
+
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { fetchByDepartmentAndLevel } from '../util/api';
+import { Link } from 'react-router-dom';
+
+const BASER_URL = "http://localhost:1337/api";
 
 const QALevelDetailPage = () => {
 
-    // get the query parameter in the query string 
+
+    const [qaLevelsFiles, setQaLevelFiles] = useState([]);
     let { level } = useParams();
-    // fetch the data using the depatment and Level 
-
-    // console.log(level)
-
-    const { isLoading, error, data } = useQuery({
-        queryKey: ['qadocs', 'QA', level],
-        queryFn: fetchByDepartmentAndLevel('QA', level)
-    });
 
 
+    useEffect(() => {
+        fetch(`${BASER_URL}/documents?filters[department][$eq]=QA&filters[level][$eq]=${level}&populate=*`)
+            .then(response => response.json())
+            .then(res => {
+                setQaLevelFiles([]);
+                setQaLevelFiles(res.data);
 
-    console.log(data)
+            })
+    }, [level]);
 
 
     return (
@@ -50,9 +52,61 @@ const QALevelDetailPage = () => {
 
                                     {/* render all the data here  */}
                                     {
-                                        // fetchByDepartmentAndLevel('QA', level).then(response => {
-                                        //     console.log(response?.data)
-                                        // })
+
+
+                                        // console.log(data?.data?.data);
+                                        qaLevelsFiles.length > 0 ? (
+                                            qaLevelsFiles?.map(file => {
+
+                                                // console.log(file.attributes.file.data.attributes.url)
+
+                                                return (
+                                                    <tr key={file?.id}>
+
+                                                        <td>
+
+                                                            <Link to={`http://localhost:1337${file?.attributes?.file?.data?.attributes?.url}`} >
+                                                                <p className="text-sm align-middle text-center  font-weight-bold mb-0">
+
+                                                                    {file?.attributes?.file?.data?.attributes?.name}
+
+                                                                </p>
+
+
+                                                            </Link>
+
+                                                        </td>
+                                                        <td className="align-middle text-center">
+                                                            <span className="text-secondary text-xs font-weight-bold">
+                                                                {file?.attributes?.description}
+                                                            </span>
+                                                        </td>
+
+
+
+                                                    </tr>
+                                                )
+
+
+
+                                            })
+                                        ) : (
+                                            <tr>
+
+
+                                                <td className="align-middle text-center">
+                                                    <span className="text-secondary text-xs font-weight-bold">
+                                                        <h2>No Files</h2>
+                                                    </span>
+                                                </td>
+
+
+
+                                            </tr>
+                                        )
+
+
+
                                     }
 
                                 </tbody>

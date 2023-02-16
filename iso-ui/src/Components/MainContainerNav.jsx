@@ -30,7 +30,7 @@ const MainContainerNav = () => {
     const filtered = files?.filter(el => {
         return el.name.toLowerCase().includes(inputText)
     });
-    console.log(filtered)
+    // console.log(filtered)
 
 
 
@@ -41,7 +41,7 @@ const MainContainerNav = () => {
 
     }, []);
 
-    console.log(files)
+    // console.log(files)
 
 
 
@@ -58,7 +58,7 @@ const MainContainerNav = () => {
                             {/* get the current url and pass it on bread crumbs */}
                             <li className="breadcrumb-item text-sm text-white active" aria-current="page">{currentLocation}</li>
                         </ol>
-                        <h6 className="font-weight-bolder text-white mb-0">{currentLocation}</h6>
+                        <h2 className="font-weight-bolder text-white mb-0">{currentLocation.toUpperCase()}</h2>
                     </nav>
                     <div className="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                         <div className="ms-md-auto pe-md-3 d-flex align-items-center">
