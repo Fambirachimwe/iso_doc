@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
+import Level4DetailPageView from './Level4DetailPageView';
 
 
 const ManagementLevelDetailPage = () => {
     const [faLevelsFiles, setFALevelFiles] = useState([]);
     let { level } = useParams();
 
-    const BASER_URL = "http://localhost:1337/api";
+    const BASER_URL = "http://192.168.100.10:1337/api";
 
 
 
@@ -27,7 +28,16 @@ const ManagementLevelDetailPage = () => {
                         <h6>Management Files</h6>
                     </div>
 
-                    <div className="card-body px-2 pt-2 pb-2">
+                    {/* add the forms and register tables */}
+
+                    {/* check if we are in level 4  */}
+
+                    {
+                        level == 4 ? (
+                            <Level4DetailPageView faLevelsFiles={faLevelsFiles} />
+                        )
+                        : (
+                            <div className="card-body px-2 pt-2 pb-2">
                         {/* insert some file card here  */}
                         <div className="levelFiles">
 
@@ -61,7 +71,7 @@ const ManagementLevelDetailPage = () => {
 
                                                         <td>
 
-                                                            <Link to={`http://localhost:1337${file?.attributes?.file?.data?.attributes?.url}`} >
+                                                            <Link to={`http://192.168.100.10:1337${file?.attributes?.file?.data?.attributes?.url}`} >
                                                                 <p className="text-sm align-middle text-center  font-weight-bold mb-0">
 
                                                                     {file?.attributes?.file?.data?.attributes?.name}
@@ -111,6 +121,10 @@ const ManagementLevelDetailPage = () => {
 
                         {/* data?.data?.attributes?.files?.data.map(file => ( */}
                     </div>
+                        )
+                    }
+
+
                 </div>
             </div>
         </div>

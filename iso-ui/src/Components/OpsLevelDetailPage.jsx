@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import Level4DetailPageView from './Level4DetailPageView';
 
 
 const OpsLevelDetailPage = () => {
@@ -7,7 +8,7 @@ const OpsLevelDetailPage = () => {
     const [faLevelsFiles, setFALevelFiles] = useState([]);
     let { level } = useParams();
 
-    const BASER_URL = "http://localhost:1337/api";
+    const BASER_URL = "http://192.168.100.10:1337/api";
 
 
 
@@ -28,7 +29,16 @@ const OpsLevelDetailPage = () => {
                         <h6>Operations</h6>
                     </div>
 
-                    <div className="card-body px-2 pt-2 pb-2">
+                    {/* add the forms and register tables */}
+
+                    {/* check if we are in level 4  */}
+
+                    {
+                        level == 4 ? (
+                            <Level4DetailPageView faLevelsFiles={faLevelsFiles} />
+                        )
+                        : (
+                            <div className="card-body px-2 pt-2 pb-2">
                         {/* insert some file card here  */}
                         <div className="levelFiles">
 
@@ -39,8 +49,8 @@ const OpsLevelDetailPage = () => {
                             <table className="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th className=" align-middle text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
-                                        <th className="align-middle text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
+                                        <th className="  text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
+                                        <th className=" text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
 
 
                                     </tr>
@@ -62,8 +72,8 @@ const OpsLevelDetailPage = () => {
 
                                                         <td>
 
-                                                            <Link to={`http://localhost:1337${file?.attributes?.file?.data?.attributes?.url}`} >
-                                                                <p className="text-sm align-middle text-center  font-weight-bold mb-0">
+                                                            <Link to={`http://192.168.100.10:1337${file?.attributes?.file?.data?.attributes?.url}`} >
+                                                                <p className="text-sm   font-weight-bold mb-0">
 
                                                                     {file?.attributes?.file?.data?.attributes?.name}
 
@@ -73,7 +83,7 @@ const OpsLevelDetailPage = () => {
                                                             </Link>
 
                                                         </td>
-                                                        <td className="align-middle text-center">
+                                                        <td className="">
                                                             <span className="text-secondary text-xs font-weight-bold">
                                                                 {file?.attributes?.description}
                                                             </span>
@@ -112,6 +122,13 @@ const OpsLevelDetailPage = () => {
 
                         {/* data?.data?.attributes?.files?.data.map(file => ( */}
                     </div>
+                        )
+                    }
+
+
+
+
+                    
                 </div>
             </div>
         </div>

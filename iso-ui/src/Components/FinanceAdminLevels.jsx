@@ -6,7 +6,7 @@ const FinanceAdminLevels = () => {
     const [docs, setDocs] = useState([]);
 
 
-    const BASER_URL = "http://localhost:1337/api";
+    const BASER_URL = "http://192.168.100.10:1337/api";
 
 
 
@@ -173,30 +173,30 @@ const FinanceAdminLevels = () => {
                                         <tbody>
 
                                             {
-                                                docs.map(file => (
+                                                // docs?.map(file => (
 
-                                                    <tr key={file?.id}>
+                                                //     <tr key={file?.id}>
 
-                                                        <td>
+                                                //         <td>
 
-                                                            <Link to={`http://localhost:1337${file?.attributes?.file?.data?.attributes?.url}`} >
-                                                                <p className="text-sm  p-2 font-weight-bold mb-0">
+                                                //             <Link to={`http://192.168.100.10:1337${file?.attributes?.file?.data?.attributes?.url}`} >
+                                                //                 <p className="text-sm  p-2 font-weight-bold mb-0">
 
-                                                                    {file?.attributes?.file?.data?.attributes?.name}
+                                                //                     {file?.attributes?.file?.data?.attributes?.name}
 
-                                                                </p>
+                                                //                 </p>
 
 
-                                                            </Link>
+                                                //             </Link>
 
-                                                        </td>
-                                                        <td className="">
-                                                            <span className="text-secondary text-xs font-weight-bold">
-                                                                {file?.attributes?.description}
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                ))
+                                                //         </td>
+                                                //         <td className="">
+                                                //             <span className="text-secondary text-xs font-weight-bold">
+                                                //                 {file?.attributes?.description}
+                                                //             </span>
+                                                //         </td>
+                                                //     </tr>
+                                                // ))
                                             }
 
                                         </tbody>

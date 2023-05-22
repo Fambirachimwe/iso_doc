@@ -17,7 +17,7 @@ const OpsLevels = () => {
                                     <div className="row">
                                         <div className="col-8">
                                             <div className="numbers">
-                                                <h5 className="font-weight-bolder">Level 1</h5>
+                                                <h5 className="font-weight-bolder">OPS Level 1</h5>
 
                                                 <br />
                                                 <br />
@@ -46,7 +46,7 @@ const OpsLevels = () => {
                                     <div className="row">
                                         <div className="col-8">
                                             <div className="numbers">
-                                                <h5 className="font-weight-bolder">Level 2</h5>
+                                                <h5 className="font-weight-bolder">OPS Level 2</h5>
 
                                                 <br />
                                                 <br />
@@ -74,7 +74,7 @@ const OpsLevels = () => {
                                     <div className="row">
                                         <div className="col-8">
                                             <div className="numbers">
-                                                <h5 className="font-weight-bolder">Level 3</h5>
+                                                <h5 className="font-weight-bolder">OPS Level 3</h5>
 
                                                 <br />
                                                 <br />
@@ -102,7 +102,7 @@ const OpsLevels = () => {
                                     <div className="row">
                                         <div className="col-8">
                                             <div className="numbers">
-                                                <h5 className="font-weight-bolder">Level 4</h5>
+                                                <h5 className="font-weight-bolder">OPS Level 4</h5>
 
                                                 <br />
                                                 <br />
@@ -134,7 +134,7 @@ const OpsLevels = () => {
                     <div className="col-12">
                         <div className="card mb-4">
                             <div className="card-header pb-0">
-                                <h6>All files from the levels directory</h6>
+                                <h6>All files from the Operations directory</h6>
                             </div>
 
                             <div className="card-body px-0 pt-0 pb-2">

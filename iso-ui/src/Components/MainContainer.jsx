@@ -9,6 +9,7 @@ import QALevelDetailPage from './QALevelDetailPage';
 import FinanceLevelDetailPage from './FinanceLevelDetailPage';
 import OpsLevelDetailPage from './OpsLevelDetailPage';
 import ManagementLevelDetailPage from './ManagementLevelDetailPage'
+import LandingPage from './LandingPage';
 
 
 // OpsLevels
@@ -26,6 +27,8 @@ const MainContainer = () => {
                     <Routes>
                         
                         {/* This is the New navigation */}
+
+                        <Route exact path='/'  element={<LandingPage/>} />
 
                         <Route exact path="/ops/" element={<OpsLevels />} />
                         <Route exact path="/ops/:level" element={<OpsLevelDetailPage />} />

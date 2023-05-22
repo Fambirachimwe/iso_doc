@@ -81,7 +81,7 @@ const MainContainerNav = () => {
                                                     filtered.length === 0 ? (<p>File not found</p>) :
 
                                                         filtered.map(file => (
-                                                            <Link to={`http://localhost:1337${file?.url}`} target="_blank" key={file?.id}>{file?.name}</Link>
+                                                            <Link to={`http://192.168.100.10:1337${file?.url}`} target="_blank" key={file?.id}>{file?.name}</Link>
                                                         ))
 
                                                 }

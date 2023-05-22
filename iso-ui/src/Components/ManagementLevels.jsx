@@ -7,12 +7,12 @@ const ManagementLevels = () => {
     const [docs, setDocs] = useState([]);
 
 
-    const BASER_URL = "http://localhost:1337/api";
+    const BASER_URL = "http://192.168.100.10:1337/api";
 
 
 
     useEffect(() => {
-        fetch(`${BASER_URL}/documents?filters[department][$eq]=OPS&populate=*`)
+        fetch(`${BASER_URL}/documents?filters[department][$eq]=MGT&populate=*`)
             .then(response => response.json())
             .then(res => {
                 setDocs([]);
@@ -173,13 +173,13 @@ const ManagementLevels = () => {
                                         <tbody>
 
                                             {
-                                                docs.map(file => (
+                                                docs?.map(file => (
 
                                                     <tr key={file?.id}>
 
                                                         <td>
 
-                                                            <Link to={`http://localhost:1337${file?.attributes?.file?.data?.attributes?.url}`} >
+                                                            <Link to={`http://192.168.100.10:1337${file?.attributes?.file?.data?.attributes?.url}`} >
                                                                 <p className="text-sm  p-2 font-weight-bold mb-0">
 
                                                                     {file?.attributes?.file?.data?.attributes?.name}
